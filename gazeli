@@ -1,0 +1,90 @@
+#include <iostream>
+
+using namespace std;
+
+double tarif, time, b, zatraty, km, vart_benz, vart_gaz;
+
+class Avto
+{
+public:
+	void Gazel_benz();
+	void Gazel_gaz();
+  	void Sprinter();
+	double K1, K2, K3;
+
+};
+
+void Avto::Gazel_benz()
+{
+	K1 = 0.16;
+	zatraty = km * K1 * vart_benz;
+	b = time * tarif - zatraty;
+}
+
+void Avto::Gazel_gaz()
+{
+	K2 = 0.14;
+	zatraty = km * K2 * vart_gaz;
+	b = time * tarif - zatraty;
+}
+
+void Avto::Sprinter()
+{
+	K3 = 0.12;
+	zatraty = km * K3 * vart_benz;
+	b = time * tarif - zatraty;
+}
+
+int main()
+{
+	int a;
+	Avto Boss;
+    cout << "VVvedite probeg\n" <<endl;
+	cin >> km;
+	cout << endl;
+	cout << "VVvedite avto: gaz_benz: 1, gaz_gaz: 2, sprinter: 3 \n" << endl;
+	cin >> a;
+
+	if (a == 1)
+	{
+		cout << "VVvedite vartist benz\n" << endl;
+		cin >> vart_benz;
+		cout << "VVvedite tarif: \n" << endl;
+		cin >> tarif;
+		cout << "VVvedite time: \n" << endl;
+		cin >> time;
+		Boss.Gazel_benz();
+	}
+	else if (a == 2)
+	{
+		cout << "VVvedite vartist gaz\n" << endl;
+		cin >> vart_gaz;
+		cout << "VVvedite tarif: \n" << endl;
+		cin >> tarif;
+		cout << "VVvedite time: \n" << endl;
+		cin >> time;
+		Boss.Gazel_gaz();
+	}
+	else if (a == 3)
+	{
+		cout << "VVvedite vartist benz\n" << endl;
+		cin >> vart_benz;
+		cout << "VVvedite tarif: \n" << endl;
+		cin >> tarif;
+		cout << "VVvedite time: \n" << endl;
+		cin >> time;
+		Boss.Sprinter();
+	}
+	else
+	{
+		cout << "error" << endl;
+	}
+
+	b = b * 0.85; // амортизация
+
+	cout << "segodnya Boss zarabotal:" << endl;
+	cout << b << endl;
+
+	system("pause");
+}
+
